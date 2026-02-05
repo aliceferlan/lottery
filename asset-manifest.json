@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.a05d6e70.css",
-    "main.js": "/static/js/main.e75b6380.js",
-    "index.html": "/index.html",
-    "main.a05d6e70.css.map": "/static/css/main.a05d6e70.css.map",
-    "main.e75b6380.js.map": "/static/js/main.e75b6380.js.map"
+    "main.css": "/lottery/static/css/main.a05d6e70.css",
+    "main.js": "/lottery/static/js/main.e75b6380.js",
+    "index.html": "/lottery/index.html",
+    "main.a05d6e70.css.map": "/lottery/static/css/main.a05d6e70.css.map",
+    "main.e75b6380.js.map": "/lottery/static/js/main.e75b6380.js.map"
   },
   "entrypoints": [
     "static/css/main.a05d6e70.css",
