@@ -246,7 +246,7 @@ const LotoTicket = ({ ticket, onCheck }) => {
 };
 
 export default function LotoLotteryGame() {
-  const [balance, setBalance] = useState(10000);
+  const [balance, setBalance] = useState(1000);
   const [selectedNumbers, setSelectedNumbers] = useState([]);
   const [tickets, setTickets] = useState([]);
   const [totalSpent, setTotalSpent] = useState(0);
@@ -278,8 +278,7 @@ export default function LotoLotteryGame() {
   };
 
   const buyTicket = () => {
-    if (balance < TICKET_PRICE || selectedNumbers.length !== PICK_COUNT) return;
-    
+
     const winning = generateRandomNumbers(PICK_COUNT, MIN_NUMBER, MAX_NUMBER);
     // ボーナス数字は当籤番号以外から選ぶ
     let bonus;
@@ -340,9 +339,9 @@ export default function LotoLotteryGame() {
       <div className="max-w-4xl mx-auto">
         {/* ヘッダー */}
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-yellow-400 mb-2">
+          {/* <h1 className="text-3xl font-bold text-yellow-400 mb-2">
             🎱 ロト6シミュレーター 🎱
-          </h1>
+          </h1> */}
           <p className="text-blue-200 text-sm">
             1〜43から6つの数字を選んで抽選！
           </p>
@@ -353,7 +352,7 @@ export default function LotoLotteryGame() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
               <div className="text-blue-200 text-xs">所持金</div>
-              <div className="text-2xl font-bold text-yellow-400">
+              <div className={`text-2xl font-bold ${balance >= TICKET_PRICE ? 'text-yellow-400' : 'text-red-400'}`}>
                 ¥{balance.toLocaleString()}
               </div>
             </div>
@@ -446,10 +445,11 @@ export default function LotoLotteryGame() {
             </button>
             <button
               onClick={buyTicket}
-              disabled={balance < TICKET_PRICE || selectedNumbers.length !== PICK_COUNT}
               className={`px-6 py-2 rounded-full font-bold transition ${
-                balance >= TICKET_PRICE && selectedNumbers.length === PICK_COUNT
-                  ? 'bg-yellow-400 hover:bg-yellow-300 text-yellow-900'
+                selectedNumbers.length === PICK_COUNT ?
+                  balance >= TICKET_PRICE ?
+                   'bg-yellow-400 hover:bg-yellow-300 text-yellow-900'
+                   : 'bg-red-400 hover:bg-red-300 text-red-900'
                   : 'bg-gray-500 text-gray-300 cursor-not-allowed'
               }`}
             >
